@@ -1,0 +1,32 @@
+{
+  "name": "markdown-contents",
+  "description": "Generate table of contents for a markdown document.",
+  "keywords": [
+    "table of contents",
+    "contents",
+    "toc",
+    "markdown"
+  ],
+  "version": "1.0.0",
+  "main": "src/markdown-contents.js",
+  "author": "Gajus Kuizinas <gk@anuary.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gajus/markdown-contents"
+  },
+  "license": "BSD-3-Clause",
+  "scrips": {
+    "test": "gulp test"
+  },
+  "devDependencies": {
+    "chai": "^1.9.2",
+    "gulp": "^3.8.9",
+    "gulp-jshint": "^1.8.6",
+    "gulp-mocha": "^1.1.1",
+    "require-new": "^1.0.2"
+  },
+  "dependencies": {
+    "jsdom": "^1.2.3",
+    "remarkable": "^1.4.1"
+  }
+}
