@@ -21,6 +21,10 @@ MarkdownContents = function MarkdownContents (markdown) {
     markdownContents.articles = function () {
         var articles = [];
 
+        markdown = markdown.replace(/^```[\s\S]*?\n```/mg, function (match) {
+            return '';
+        });
+
         markdown.replace(/^(#+)(.*$)/mg, function (match, level, name) {
             level = level.length;
             name = name.trim();

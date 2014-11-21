@@ -63,6 +63,17 @@ describe('markdownContents', function () {
 
             expect(tree).to.deep.equal(expectedTree);
         });
+        it('does not include headings in the codeblock', function () {
+            var markdownContents = MarkdownContents('# a\n```\n# b\n```'),
+                tree = markdownContents.articles(),
+                expectedTree;
+
+            expectedTree = [
+                {level: 1, id: 'a', name: 'a'}
+            ];
+
+            expect(tree).to.deep.equal(expectedTree);
+        });
     });
     describe('.tree()', function () {
         it('returns a collection of objects representing the table of contents', function () {
