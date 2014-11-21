@@ -19,8 +19,7 @@ MarkdownContents = function MarkdownContents (markdown) {
      * @return {Array}
      */
     markdownContents.articles = function () {
-        var articles = [],
-            headings;
+        var articles = [];
 
         markdown.replace(/^(#+)(.*$)/mg, function (match, level, name) {
             level = level.length;
@@ -87,10 +86,12 @@ MarkdownContents.treeToMarkdown = function (tree, level) {
  * Makes hierarchical index of the articles from a flat index.
  * 
  * @param {Array} articles Generated using Contents.articles.
+ * @param {Boolean} makeUniqueIDs
+ * @param {Array} uniqueIDpool
  * @return {Array}
  */
-MarkdownContents.tree = function (articles) {
-    return Contents.tree(articles, false);
+MarkdownContents.tree = function (articles, makeUniqueIDs, uniqueIDpool) {
+    return Contents.tree(articles, makeUniqueIDs, uniqueIDpool);
 };
 
 module.exports = MarkdownContents;
