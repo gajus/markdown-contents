@@ -1,8 +1,10 @@
 var MarkdownContents,
-    Remarkable = require('remarkable'),
-    jsdom = require('jsdom').jsdom,
-    Contents = require('../../2014 09 11 contents/src/contents.js');
+    marked = require('marked'),
+    Contents = require('contents');
 
+/**
+ * @param {string} markdown
+ */
 MarkdownContents = function MarkdownContents (markdown) {
     var markdownContents;
 
@@ -13,18 +15,23 @@ MarkdownContents = function MarkdownContents (markdown) {
     markdownContents = this;
 
     markdownContents.tree = function () {
-        var html = MarkdownContents.markdownToHTML(markdown),
-            doc = jsdom(html),
-            articles = doc.querySelectorAll('h1, h2, h3, h4, h5, h6'),
+        var renderer = new marked.Renderer(),
+            articles = [],
             tree;
 
-        // This script is designed to be used in node.
-        // Is there a risk in doing this other than someone else taking that risk?
-        global.document = jsdom(html);
+        renderer.heading = function (text, level, raw) {
+            articles.push({
+                level: level,
+                id: text.toLowerCase().replace(/[^\w]+/g, '-'),
+                name: text
+            });
+        };
 
-        tree = Contents.makeTree(articles, undefined, undefined, doc);
-        
-        MarkdownContents._removeElementProperty(tree);
+        marked(markdown, {
+            renderer: renderer
+        });
+
+        tree = Contents.tree(articles, []);
 
         return tree;
     };
@@ -32,18 +39,6 @@ MarkdownContents = function MarkdownContents (markdown) {
     markdownContents.markdown = function () {
         return MarkdownContents.treeToMarkdown(markdownContents.tree());
     };
-};
-
-/**
- * Render markdown to HTML.
- * 
- * @param {String} markdown
- * @return {String} HTML
- */
-MarkdownContents.markdownToHTML = function (markdown) {
-    var remarkable = new Remarkable();
-
-    return remarkable.render(markdown);
 };
 
 /**
@@ -71,14 +66,6 @@ MarkdownContents.treeToMarkdown = function (tree, level) {
     });
 
     return markdown;
-};
-
-MarkdownContents._removeElementProperty = function (tree) {
-    tree.forEach(function (node) {
-        delete node.element;
-
-        MarkdownContents._removeElementProperty(node.descendants);
-    });
 };
 
 module.exports = MarkdownContents;

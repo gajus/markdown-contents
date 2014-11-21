@@ -6,13 +6,6 @@ describe('MarkdownContents', function () {
     beforeEach(function () {
         MarkdownContents = requireNew('../src/markdown-contents.js');
     });
-    describe('.markdownToHTML()', function () {
-        it('renders markdown to HTML', function () {
-            var html = MarkdownContents.markdownToHTML('# test');
-
-            expect(html).to.equal('<h1>test</h1>\n');
-        });
-    });
     describe('.treeToMarkdown()', function () {
         it('converts array representation of the table of contents to a markdown list', function () {
             var tree,

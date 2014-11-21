@@ -26,7 +26,7 @@
     "require-new": "^1.0.2"
   },
   "dependencies": {
-    "jsdom": "^1.2.3",
-    "remarkable": "^1.4.1"
+    "contents": "git://github.com/gajus/contents",
+    "marked": "^0.3.2"
   }
 }
