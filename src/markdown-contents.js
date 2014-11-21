@@ -1,5 +1,4 @@
 var MarkdownContents,
-    marked = require('marked'),
     Contents = require('contents');
 
 /**
@@ -14,24 +13,40 @@ MarkdownContents = function MarkdownContents (markdown) {
 
     markdownContents = this;
 
-    markdownContents.tree = function () {
-        var renderer = new marked.Renderer(),
-            articles = [],
-            tree;
+    /**
+     * Generate flat index of the headings.
+     *
+     * @return {Array}
+     */
+    markdownContents.articles = function () {
+        var articles = [],
+            headings;
 
-        renderer.heading = function (text, level, raw) {
+        markdown.replace(/^(#+)(.*$)/mg, function (match, level, name) {
+            level = level.length;
+            name = name.trim();
+
             articles.push({
                 level: level,
-                id: text.toLowerCase().replace(/[^\w]+/g, '-'),
-                name: text
+                id: name.toLowerCase().replace(/[^\w]+/g, '-'),
+                name: name
             });
-        };
-
-        marked(markdown, {
-            renderer: renderer
         });
 
-        tree = Contents.tree(articles, []);
+        return articles;
+    };
+
+    /**
+     * Generates hierarchical index of the headings from a flat index.
+     *
+     * @return {Array}
+     */
+    markdownContents.tree = function () {
+        var articles,
+            tree;
+
+        articles = markdownContents.articles();
+        tree = MarkdownContents.tree(articles);
 
         return tree;
     };
@@ -66,6 +81,16 @@ MarkdownContents.treeToMarkdown = function (tree, level) {
     });
 
     return markdown;
+};
+
+/**
+ * Makes hierarchical index of the articles from a flat index.
+ * 
+ * @param {Array} articles Generated using Contents.articles.
+ * @return {Array}
+ */
+MarkdownContents.tree = function (articles) {
+    return Contents.tree(articles, []);
 };
 
 module.exports = MarkdownContents;

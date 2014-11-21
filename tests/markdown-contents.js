@@ -50,6 +50,20 @@ describe('markdownContents', function () {
     beforeEach(function () {
         MarkdownContents = requireNew('../src/markdown-contents.js');
     });
+    describe('.articles()', function () {
+        it('returns a collection of objects representing flat index of the table headings', function () {
+            var markdownContents = MarkdownContents('# a\n## b\n'),
+                tree = markdownContents.articles(),
+                expectedTree;
+
+            expectedTree = [
+                {level: 1, id: 'a', name: 'a'},
+                {level: 2, id: 'b', name: 'b'}
+            ];
+
+            expect(tree).to.deep.equal(expectedTree);
+        });
+    });
     describe('.tree()', function () {
         it('returns a collection of objects representing the table of contents', function () {
             var markdownContents = MarkdownContents('# a\n## b\n'),
