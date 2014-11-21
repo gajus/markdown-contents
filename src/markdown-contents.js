@@ -90,7 +90,7 @@ MarkdownContents.treeToMarkdown = function (tree, level) {
  * @return {Array}
  */
 MarkdownContents.tree = function (articles) {
-    return Contents.tree(articles, []);
+    return Contents.tree(articles, false);
 };
 
 module.exports = MarkdownContents;
