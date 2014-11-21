@@ -7,7 +7,7 @@
     "toc",
     "markdown"
   ],
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "src/markdown-contents.js",
   "author": "Gajus Kuizinas <gk@anuary.com>",
   "repository": {
