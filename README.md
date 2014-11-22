@@ -11,11 +11,48 @@ The underlying implementation is rendering markdown file into HTML and then use 
 <h2 id="usage">Usage</h2>
 
 ```js
-var Contents = require('markdown-contents'),
+var MarkdownContents = require('markdown-contents'),
     markdown = '',
-    config = '';
+    markdownContents = MarkdownContents(markdown);
 
-Contents(markdown, config);
+/**
+ * Generate flat index of the headings.
+ *
+ * @return {Array}
+ */
+markdownContents.articles();
+
+/**
+ * Generates hierarchical index of the headings from a flat index.
+ *
+ * @return {Array}
+ */
+markdownContents.tree();
+
+/**
+ * Generate markdown for the table of contents.
+ *
+ * @return {String}
+ */
+markdownContents.markdown();
+
+/**
+ * Generate markdown contents for an array of contents object definition.
+ *
+ * @param {Array} tree [{id: '', name: '', descendants: []}]
+ * @return {String} markdown
+ */
+MarkdownContents.treeToMarkdown();
+
+/**
+ * Makes hierarchical index of the articles from a flat index.
+ * 
+ * @param {Array} articles Generated using Contents.articles.
+ * @param {Boolean} makeUniqueIDs
+ * @param {Array} uniqueIDpool
+ * @return {Array}
+ */
+MarkdownContents.tree();
 ```
 
 <h2 id="download">Download</h2>
