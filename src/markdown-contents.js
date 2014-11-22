@@ -54,6 +54,11 @@ MarkdownContents = function MarkdownContents (markdown) {
         return tree;
     };
 
+    /**
+     * Generate markdown for the table of contents.
+     *
+     * @return {String}
+     */
     markdownContents.markdown = function () {
         return MarkdownContents.treeToMarkdown(markdownContents.tree());
     };
