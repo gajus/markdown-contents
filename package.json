@@ -27,6 +27,6 @@
     "require-new": "^1.1.0"
   },
   "dependencies": {
-    "contents": "^4.0.1"
+    "contents": "^4.0.2"
   }
 }
