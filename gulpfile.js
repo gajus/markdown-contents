@@ -1,16 +1,15 @@
 var gulp = require('gulp'),
     mocha = require('gulp-mocha'),
-    jshint = require('gulp-jshint'),
     Gitdown = require('gitdown');
 
-gulp.task('lint', function () {
+/* gulp.task('lint', function () {
     return gulp
         .src('./src/*.js')
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'));
-});
+}); */
 
-gulp.task('test', ['lint'], function () {
+gulp.task('test', /* ['lint'], */ function () {
     return gulp
         .src(['./tests/*.js'], {read: false})
         .pipe(mocha());

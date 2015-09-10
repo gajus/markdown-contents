@@ -93,7 +93,7 @@ MarkdownContents.treeToMarkdown = function (tree, level) {
 
 /**
  * Makes hierarchical index of the articles from a flat index.
- * 
+ *
  * @param {Array} articles Generated using Contents.articles.
  * @param {Boolean} makeUniqueIDs
  * @param {Array} uniqueIDpool
