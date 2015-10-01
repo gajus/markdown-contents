@@ -1,5 +1,9 @@
 var MarkdownContents,
-    Contents = require('contents');
+    Contents,
+    _;
+
+_ = require('lodash');
+Contents = require('contents');
 
 /**
  * @param {string} markdown
@@ -31,7 +35,7 @@ MarkdownContents = function MarkdownContents (markdown) {
 
             articles.push({
                 level: level,
-                id: name.toLowerCase().replace(/[^\w]+/g, '-'),
+                id: _.trim(name.toLowerCase().replace(/[^\w]+/g, '-'), '-'),
                 name: name
             });
         });
@@ -57,7 +61,7 @@ MarkdownContents = function MarkdownContents (markdown) {
     /**
      * Generate markdown for the table of contents.
      *
-     * @return {String}
+     * @return {string}
      */
     markdownContents.markdown = function () {
         return MarkdownContents.treeToMarkdown(markdownContents.tree());
@@ -68,7 +72,7 @@ MarkdownContents = function MarkdownContents (markdown) {
  * Generate markdown contents for an array of contents object definition.
  *
  * @param {Array} tree [{id: '', name: '', descendants: []}]
- * @return {String} markdown
+ * @return {string} markdown
  */
 MarkdownContents.treeToMarkdown = function (tree, level) {
     var markdown = '',
@@ -95,7 +99,7 @@ MarkdownContents.treeToMarkdown = function (tree, level) {
  * Makes hierarchical index of the articles from a flat index.
  *
  * @param {Array} articles Generated using Contents.articles.
- * @param {Boolean} makeUniqueIDs
+ * @param {boolean} makeUniqueIDs
  * @param {Array} uniqueIDpool
  * @return {Array}
  */

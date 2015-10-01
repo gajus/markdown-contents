@@ -11,9 +11,13 @@ The underlying implementation is rendering markdown file into HTML and then use 
 ## Usage
 
 ```js
-var MarkdownContents = require('markdown-contents'),
-    markdown = '',
-    markdownContents = MarkdownContents(markdown);
+var MarkdownContents,
+    markdown,
+    markdownContents;
+
+MarkdownContents = require('markdown-contents');
+markdown = '';
+markdownContents = MarkdownContents(markdown);
 
 /**
  * Generate flat index of the headings.
@@ -32,7 +36,7 @@ markdownContents.tree();
 /**
  * Generate markdown for the table of contents.
  *
- * @return {String}
+ * @return {string}
  */
 markdownContents.markdown();
 
@@ -40,15 +44,15 @@ markdownContents.markdown();
  * Generate markdown contents for an array of contents object definition.
  *
  * @param {Array} tree [{id: '', name: '', descendants: []}]
- * @return {String} markdown
+ * @return {string} markdown
  */
 MarkdownContents.treeToMarkdown();
 
 /**
  * Makes hierarchical index of the articles from a flat index.
- * 
+ *
  * @param {Array} articles Generated using Contents.articles.
- * @param {Boolean} makeUniqueIDs
+ * @param {boolean} makeUniqueIDs
  * @param {Array} uniqueIDpool
  * @return {Array}
  */

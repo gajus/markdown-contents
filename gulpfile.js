@@ -2,30 +2,23 @@ var gulp = require('gulp'),
     mocha = require('gulp-mocha'),
     Gitdown = require('gitdown');
 
-/* gulp.task('lint', function () {
+gulp.task('test', function () {
     return gulp
-        .src('./src/*.js')
-        .pipe(jshint())
-        .pipe(jshint.reporter('jshint-stylish'));
-}); */
-
-gulp.task('test', /* ['lint'], */ function () {
-    return gulp
-        .src(['./tests/*.js'], {read: false})
+        .src(['./test/*.js'], {
+            read: false
+        })
         .pipe(mocha());
 });
 
 gulp.task('gitdown', function () {
-    var gitdown;
-
-    gitdown = Gitdown.read('.gitdown/README.md');
-
-    return gitdown.write('README.md');
+    return Gitdown
+        .readFile(__dirname + '/.README/README.md')
+        .writeFile('./README.md');
 });
 
 gulp.task('watch', function () {
-    gulp.watch(['./src/*', './tests/*'], ['default']);
-    gulp.watch(['./.gitdown/*'], ['gitdown']);
+    gulp.watch(['./src/**/*', './test/**/*'], ['default']);
+    gulp.watch(['./.gitdown/**/*'], ['gitdown']);
 });
 
 gulp.task('default', ['test']);
