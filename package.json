@@ -7,7 +7,7 @@
     "toc",
     "markdown"
   ],
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "./src/markdown-contents.js",
   "author": {
     "name": "Gajus Kuizinas",
