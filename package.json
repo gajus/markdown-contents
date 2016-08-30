@@ -31,6 +31,7 @@
     "require-new": "^1.1.0"
   },
   "dependencies": {
-    "contents": "^4.0.2"
+    "contents": "^4.0.2",
+    "lodash": "^4.15.0"
   }
 }
