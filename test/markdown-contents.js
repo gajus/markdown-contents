@@ -1,11 +1,7 @@
-var expect = require('chai').expect,
-    requireNew = require('require-new');
+const expect = require('chai').expect;
+const MarkdownContents = require('../src/markdown-contents.js');
 
 describe('MarkdownContents', function () {
-    var MarkdownContents;
-    beforeEach(function () {
-        MarkdownContents = requireNew('../src/markdown-contents.js');
-    });
     describe('.treeToMarkdown()', function () {
         it('converts array representation of the table of contents to a markdown list', function () {
             var tree,
@@ -34,7 +30,7 @@ describe('MarkdownContents', function () {
             foo.descendants = [bar];
             bar.descendants = [baz];
 
-            tree = [foo];            
+            tree = [foo];
 
             markdown = MarkdownContents.treeToMarkdown(tree);
 
@@ -44,12 +40,8 @@ describe('MarkdownContents', function () {
 });
 
 describe('markdownContents', function () {
-    var MarkdownContents,
-        removeElementProperty;
+    var removeElementProperty;
 
-    beforeEach(function () {
-        MarkdownContents = requireNew('../src/markdown-contents.js');
-    });
     describe('.articles()', function () {
         it('returns a collection of objects representing flat index of the table headings', function () {
             var markdownContents = MarkdownContents('# a\n## b\n'),

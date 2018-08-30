@@ -1,23 +1,23 @@
-<h2 id="markdown-contents">Markdown Contents</h2>
+## Markdown Contents
 
-[![Travis build status](http://img.shields.io/travis/gajus/markdown-contents/master.svg?style=flat)](https://travis-ci.org/gajus/markdown-contents)
-[![NPM version](http://img.shields.io/npm/v/markdown-contents.svg?style=flat)](https://www.npmjs.org/package/markdown-contents)
+[![Travis build status](http://img.shields.io/travis/gajus/markdown-contents/master.svg?style=flat-square)](https://travis-ci.org/gajus/markdown-contents)
+[![Coveralls](https://img.shields.io/coveralls/gajus/markdown-contents.svg?style=flat-square)](https://coveralls.io/github/gajus/markdown-contents)
+[![NPM version](http://img.shields.io/npm/v/markdown-contents.svg?style=flat-square)](https://www.npmjs.org/package/markdown-contents)
+[![Canonical Code Style](https://img.shields.io/badge/code%20style-canonical-blue.svg?style=flat-square)](https://github.com/gajus/canonical)
+[![Twitter Follow](https://img.shields.io/twitter/follow/kuizinas.svg?style=social&label=Follow)](https://twitter.com/kuizinas)
 
 Generate table of contents for a markdown document.
 
 The underlying implementation is rendering markdown file into HTML and then use [Contents](https://github.com/gajus/contents).
  to generate the table of contents.
 
-<h2 id="usage">Usage</h2>
+## Usage
 
 ```js
-var MarkdownContents,
-    markdown,
-    markdownContents;
+import MarkdownContents from 'markdown-contents';
 
-MarkdownContents = require('markdown-contents');
-markdown = '';
-markdownContents = MarkdownContents(markdown);
+const markdown = '';
+const markdownContents = MarkdownContents(markdown);
 
 /**
  * Generate flat index of the headings.
@@ -57,12 +57,5 @@ MarkdownContents.treeToMarkdown();
  * @return {Array}
  */
 MarkdownContents.tree();
-```
 
-<h2 id="download">Download</h2>
-
-Download using NPM:
-
-```sh
-npm install markdown-contents
 ```

@@ -1,10 +1,10 @@
 language: node_js
 node_js:
-    - 6
-    - 5
-    - 4
-install:
-    - npm install
+  - node
+  - 8
+script:
+  - export NODE_ENV=test
+  - npm run test
 notifications:
-    email: false
+  email: false
 sudo: false

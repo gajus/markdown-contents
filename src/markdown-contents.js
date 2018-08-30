@@ -3,7 +3,7 @@ var MarkdownContents,
     _;
 
 _ = require('lodash');
-Contents = require('contents');
+Contents = require('contents').default;
 
 /**
  * @param {string} markdown

@@ -1,37 +1,33 @@
 {
-  "name": "markdown-contents",
+  "author": {
+    "email": "gajus@gajus.com",
+    "name": "Gajus Kuizinas",
+    "url": "http://gajus.com"
+  },
+  "dependencies": {
+    "contents": "^5.0.0",
+    "lodash": "^4.17.10"
+  },
   "description": "Generate table of contents for a markdown document.",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
+  },
   "keywords": [
     "table of contents",
     "contents",
     "toc",
     "markdown"
   ],
-  "version": "1.0.9",
+  "license": "BSD-3-Clause",
   "main": "./src/markdown-contents.js",
-  "author": {
-    "name": "Gajus Kuizinas",
-    "email": "gk@anuary.com",
-    "url": "http://gajus.com"
-  },
+  "name": "markdown-contents",
   "repository": {
     "type": "git",
     "url": "https://github.com/gajus/markdown-contents"
   },
-  "license": "BSD-3-Clause",
   "scripts": {
-    "test": "gulp test"
+    "test": "mocha"
   },
-  "devDependencies": {
-    "chai": "^3.5.0",
-    "gitdown": "^2.4.10",
-    "gulp": "^3.9.1",
-    "gulp-jshint": "^2.0.1",
-    "gulp-mocha": "^3.0.1",
-    "require-new": "^1.1.0"
-  },
-  "dependencies": {
-    "contents": "^4.0.2",
-    "lodash": "^4.15.0"
-  }
+  "version": "1.0.9"
 }
